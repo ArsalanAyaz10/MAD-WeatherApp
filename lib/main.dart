@@ -46,7 +46,8 @@ class _HomePageState extends State<HomePage> {
       return 'https://lottie.host/ef35e6b1-80b9-40ba-8538-de3bbafa67ee/6bgrwpkZJE.json';
     } else if (description.contains("rain") || description.contains("shower")) {
       return 'https://lottie.host/3616f164-49e6-4738-8aff-f04b72e8eec3/nnL5DdqwY9.json';
-    } else if (description.contains("cloud") || description.contains("overcast")) {
+    } else if (description.contains("cloud") ||
+        description.contains("overcast")) {
       return 'https://lottie.host/a5e99722-3c49-4900-b73a-1051e20b5b69/D4KLxS73I3.json';
     } else if (description.contains("wind")) {
       return 'https://lottie.host/0fc8ac49-7d57-4c18-81b4-77c8e5cfab30/BNcaUp2Vpe.json';
@@ -74,26 +75,30 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Always display city name
                   Text(
-                    "City: ${weather?.cityName ?? 'Unknown'}",
-                    style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    weather?.cityName ?? 'Unknown',
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
 
-                  // Display weather animation from network
                   Lottie.network(
                     getWeatherAnimation(weather!),
                     height: 200,
                     width: 200,
                   ),
 
-                  // Display weather details
                   Text(
-                    "Current Temperature: ${weather.temp}°C",
+                    "${weather.temp}°C",
                     style: const TextStyle(fontSize: 18),
                   ),
                   Text(
                     "Condition: ${weather.description}",
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                  Text(
+                    "Min Temperature: ${weather.tempMin}°C",
                     style: const TextStyle(fontSize: 16),
                   ),
                   Text(
